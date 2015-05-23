@@ -1,24 +1,16 @@
 package com.charlesli.rockpaperscissors;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import android.view.View.OnKeyListener;
-
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
-
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity{
 
     private EditText name;
     private Button gobutton;
@@ -37,9 +29,7 @@ public class MainActivity extends Activity {
                 startActivity(screen);
             }
         });
-
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
