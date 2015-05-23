@@ -11,7 +11,7 @@
 
 
     <EditText
-        android:text="Name"
+        android:text=""
 
         android:id="@+id/editTextResult"
         android:layout_width="150dp"

@@ -22,10 +22,12 @@ public class MainActivity extends Activity{
         name = (EditText) findViewById(R.id.editTextResult);
         gobutton = (Button) findViewById(R.id.buttonStop);
 
+
         gobutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent screen = new Intent(MainActivity.this, OptionsActivity.class);
+                screen.putExtra("NAME", name.getText().toString());
                 startActivity(screen);
             }
         });

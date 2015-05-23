@@ -19,6 +19,11 @@ public class OptionsActivity extends ActionBarActivity {
     private TextView mSelectedOptionsTextView;
     private TextView mResultTextView;
     private Random mRandom;
+    private String name;
+
+    private final int ROCK = 0;
+    private final int PAPER = 1;
+    private final int SCISSORS = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,10 @@ public class OptionsActivity extends ActionBarActivity {
         mSelectedOptionsTextView = (TextView) findViewById(R.id.selectedOptionTextView);
         mResultTextView = (TextView) findViewById(R.id.resultTextView);
         //testing1233
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            name = bundle.getString("NAME");
+        }
 
 
 
@@ -38,16 +47,7 @@ public class OptionsActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 mSelectedOptionsTextView.setText("Rock!!");
-
-                if (randomNum() == 0) {
-                    mResultTextView.setText("It's a Tie!!!!");
-                }
-                else if (randomNum() == 1) {
-                    mResultTextView.setText("You Lose!!!");
-                }
-                else if (randomNum() == 2) {
-                    mResultTextView.setText("You Win!!!");
-                }
+                calculate(ROCK);
             }
         });
 
@@ -55,15 +55,7 @@ public class OptionsActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 mSelectedOptionsTextView.setText("Paper!!");
-                if (randomNum() == 0) {
-                    mResultTextView.setText("You Win!!!");
-                }
-                else if (randomNum() == 1) {
-                    mResultTextView.setText("It's a Tie!!!!");
-                }
-                else if (randomNum() == 2) {
-                    mResultTextView.setText("You Lose!!!");
-                }
+                calculate(PAPER);
             }
         });
 
@@ -71,17 +63,27 @@ public class OptionsActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 mSelectedOptionsTextView.setText("Scissors");
-                if (randomNum() == 0) {
-                    mResultTextView.setText("You Lose!!!");
-                }
-                else if (randomNum() == 1) {
-                    mResultTextView.setText("You Win!!!");
-                }
-                else if (randomNum() == 2) {
-                    mResultTextView.setText("It's a Tie!!!!");
-                }
+                calculate(SCISSORS);
             }
         });
+    }
+
+    public void calculate(int n) {
+        int compChoice = randomNum();
+
+        if (compChoice == n) {
+            mResultTextView.setText(name + " It's a Tie!!!!");
+        }
+        else if (compChoice == ROCK && n == SCISSORS
+                || compChoice == PAPER && n == ROCK
+                || compChoice == SCISSORS && n == PAPER) {
+            mResultTextView.setText(name + " You Lose!!!");
+        }
+        else if (compChoice == ROCK && n == PAPER
+                || compChoice == PAPER && n == SCISSORS
+                || compChoice == SCISSORS && n == ROCK) {
+            mResultTextView.setText(name + " You Win!!!");
+        }
     }
 
     @Override
@@ -102,11 +104,18 @@ public class OptionsActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        else if (id == R.id.options) {
+            mResultTextView.setText("HI");
+        }
+        else if (id == android.R.id.home) {
+
+        }
 
         return super.onOptionsItemSelected(item);
     }
 
     public int randomNum() {
+        mRandom = new Random();
         return mRandom.nextInt(3);
 
     }
