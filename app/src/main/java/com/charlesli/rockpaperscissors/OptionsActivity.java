@@ -30,7 +30,7 @@ public class OptionsActivity extends ActionBarActivity {
         mScissorsView = (ImageView) findViewById(R.id.scissors);
         mSelectedOptionsTextView = (TextView) findViewById(R.id.selectedOptionTextView);
         mResultTextView = (TextView) findViewById(R.id.resultTextView);
-        //testing
+        //testing123
 
 
 
