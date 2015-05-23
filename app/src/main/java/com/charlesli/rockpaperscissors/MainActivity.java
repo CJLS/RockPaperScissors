@@ -1,5 +1,6 @@
 package com.charlesli.rockpaperscissors;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,18 +13,32 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
 
+    private EditText name;
+    private Button gobutton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        name = (EditText) findViewById(R.id.editTextResult);
+        gobutton = (Button) findViewById(R.id.buttonStop);
 
+        gobutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent screen = new Intent(MainActivity.this, OptionsActivity.class);
+                startActivity(screen);
             }
+        });
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
