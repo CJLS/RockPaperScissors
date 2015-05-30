@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.charlesli.common.Constants;
+
 
 public class MainActivity extends ActionBarActivity{
 
@@ -27,7 +29,7 @@ public class MainActivity extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sharedInfo = getSharedPreferences("SHARED_RPS", MODE_PRIVATE);
+        sharedInfo = getSharedPreferences(Constants.SHARED_PREF, MODE_PRIVATE);
         //savedName = sharedInfo.getString("NAME", "Charles");
 
 
@@ -44,7 +46,7 @@ public class MainActivity extends ActionBarActivity{
             public void onClick(View v) {
                 if (!name.getText().toString().equals("")) {
                     SharedPreferences.Editor editor = sharedInfo.edit();
-                    editor.putString("NAME", name.getText().toString());
+                    editor.putString(Constants.NAMES_PREF, name.getText().toString());
                     editor.commit();
 
                     Intent screen = new Intent(MainActivity.this, OptionsActivity.class);

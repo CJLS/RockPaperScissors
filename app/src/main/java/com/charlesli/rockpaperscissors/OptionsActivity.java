@@ -1,5 +1,6 @@
 package com.charlesli.rockpaperscissors;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.charlesli.common.Constants;
 
 import java.util.Random;
 
@@ -24,11 +27,15 @@ public class OptionsActivity extends ActionBarActivity {
     private final int ROCK = 0;
     private final int PAPER = 1;
     private final int SCISSORS = 2;
+    private SharedPreferences sharedInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
+
+        sharedInfo = getSharedPreferences(Constants.SHARED_PREF, MODE_PRIVATE);
+        name = sharedInfo.getString(Constants.NAMES_PREF, Constants.DEFAULT_NAME);
 
         mRockView = (ImageView) findViewById(R.id.rock);
         mPaperView = (ImageView) findViewById(R.id.paper);
@@ -36,10 +43,10 @@ public class OptionsActivity extends ActionBarActivity {
         mSelectedOptionsTextView = (TextView) findViewById(R.id.selectedOptionTextView);
         mResultTextView = (TextView) findViewById(R.id.resultTextView);
         //testing1233
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            name = bundle.getString("NAME");
-        }
+//        Bundle bundle = getIntent().getExtras();
+//        if (bundle != null) {
+//            name = bundle.getString("NAME");
+//        }
 
 
 
@@ -108,7 +115,7 @@ public class OptionsActivity extends ActionBarActivity {
             mResultTextView.setText("HI");
         }
         else if (id == android.R.id.home) {
-
+            //empty
         }
 
         return super.onOptionsItemSelected(item);
