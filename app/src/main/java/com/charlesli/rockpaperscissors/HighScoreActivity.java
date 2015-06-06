@@ -2,6 +2,7 @@ package com.charlesli.rockpaperscissors;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -34,11 +35,14 @@ public class HighScoreActivity extends ActionBarActivity {
     private ListView mHighScoresList;
     private ListAdapter mListAdapter;
     private ArrayList<HighScore> mHighScores;
+    Typeface mFont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_high_score);
+
+        mFont = Typeface.createFromAsset(getAssets(), "pokemon_solid.ttf");
 
         mHighScoresList = (ListView) findViewById(R.id.highScoresList);
         mListAdapter = new ListAdapter(this);
@@ -141,6 +145,8 @@ public class HighScoreActivity extends ActionBarActivity {
 
             TextView name = (TextView) convertView.findViewById(R.id.name_tv);
             TextView score = (TextView) convertView.findViewById(R.id.score_tv);
+
+            name.setTypeface(mFont);
 
             name.setText(mHighScores.get(position).getName());
             score.setText(Integer.toString(mHighScores.get(position).getScore()));
