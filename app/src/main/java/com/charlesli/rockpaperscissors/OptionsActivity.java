@@ -1,8 +1,9 @@
 package com.charlesli.rockpaperscissors;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -111,8 +112,10 @@ public class OptionsActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-        else if (id == R.id.options) {
+        else if (id == R.id.high_scores) {
             mResultTextView.setText("HI");
+            Intent in = new Intent(OptionsActivity.this, HighScoreActivity.class);
+            startActivity(in);
         }
         else if (id == android.R.id.home) {
             //empty

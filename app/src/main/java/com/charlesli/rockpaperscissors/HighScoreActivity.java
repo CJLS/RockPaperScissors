@@ -4,6 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -11,17 +15,29 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.charlesli.actor.HighScore;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 
 public class HighScoreActivity extends ActionBarActivity {
+
+    private ListView mHighScoresList;
+    private ListAdapter mListAdapter;
+    private ArrayList<HighScore> mHighScores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_high_score);
+
+        mHighScoresList = (ListView) findViewById(R.id.highScoresList);
+        mListAdapter = new ListAdapter();
+        mHighScores = new ArrayList<HighScore>();
+
 
         String url = "http://10.10.190.52/get_scores.php";
 
@@ -37,7 +53,9 @@ public class HighScoreActivity extends ActionBarActivity {
                         jObj = jArray.getJSONObject(i);
                         System.out.println("Name is " + jObj.getString("name"));
                         System.out.println("Score is " + jObj.getString("score"));
+                        mHighScores.add(new HighScore(jObj.getString("name"), jObj.getInt("score")));
                     }
+                    mHighScoresList.setAdapter(mListAdapter);
                 }
                 catch (Exception e) {
 
@@ -51,6 +69,32 @@ public class HighScoreActivity extends ActionBarActivity {
         });
 
         queue.add(stringRequest);
+    }
+
+    public class ListAdapter extends BaseAdapter {
+
+        @Override
+        public int getCount() {
+            return mHighScores.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+
+            }
+            return null;
+        }
     }
 
 
