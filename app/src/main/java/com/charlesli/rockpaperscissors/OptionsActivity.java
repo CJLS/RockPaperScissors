@@ -87,17 +87,17 @@ public class OptionsActivity extends ActionBarActivity {
         int compChoice = randomNum();
 
         if (compChoice == n) {
-            mResultTextView.setText(name + " It's a Tie!!!!");
+            mResultTextView.setText(name + "! It's a Tie!!!!");
         }
         else if (compChoice == ROCK && n == SCISSORS
                 || compChoice == PAPER && n == ROCK
                 || compChoice == SCISSORS && n == PAPER) {
-            mResultTextView.setText(name + " You Lose!!!");
+            mResultTextView.setText(name + "! You Lose!!!");
         }
         else if (compChoice == ROCK && n == PAPER
                 || compChoice == PAPER && n == SCISSORS
                 || compChoice == SCISSORS && n == ROCK) {
-            mResultTextView.setText(name + " You Win!!!");
+            mResultTextView.setText(name + "! You Win!!!");
         }
     }
 
@@ -120,7 +120,6 @@ public class OptionsActivity extends ActionBarActivity {
             return true;
         }
         else if (id == R.id.high_scores) {
-            mResultTextView.setText("HI");
             Intent in = new Intent(OptionsActivity.this, HighScoreActivity.class);
             startActivity(in);
         }

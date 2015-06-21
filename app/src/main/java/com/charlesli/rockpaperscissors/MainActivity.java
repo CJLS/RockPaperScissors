@@ -37,7 +37,7 @@ public class MainActivity extends ActionBarActivity{
         gobutton = (Button) findViewById(R.id.buttonStop);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Home Page");
+        actionBar.setTitle("Rock Paper and Scissors");
         actionBar.setDisplayHomeAsUpEnabled(true);
 
 

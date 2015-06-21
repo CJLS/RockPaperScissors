@@ -3,7 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_options">OptionsActivity</string>
-    <string name="title_activity_high_score">HighScoreActivity</string>
+    <string name="title_activity_options">Rock Paper and Scissors</string>
+    <string name="title_activity_high_score">High Scores</string>
     <string name="banner_ad_unit_id">ca-app-pub-2189265150037130/9716956405</string>
 </resources>
